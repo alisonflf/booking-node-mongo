@@ -4,12 +4,23 @@ const router = new Router({ prefix: '/booking' })
 router.post('/', async (ctx, next) => {
     const body = ctx.request.body
 
+    const settings = await ctx.db.collection('settings').find().toArray()
+
+    if (settings.length === 0) {
+        ctx.throw(400, 'restaurant not configured');
+    }
+
     const table = await ctx.db.collection('tables').find({
         number: body.table
     }).toArray()
 
     if (table.length === 0) {
         ctx.throw(400, 'table not found');
+    }
+
+    if (new Date(body.date).getHours() < settings[0].initial_time ||
+        new Date(body.date).getHours() > settings[0].final_time) {
+        ctx.throw(400, 'the restaurant will not be opened at the selected time');
     }
 
     const reservated = await ctx.db.collection('tables').find({

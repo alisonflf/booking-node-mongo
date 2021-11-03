@@ -13,8 +13,10 @@ To keep it simple i have decided to keep the bookings on the tables collection a
 on a real application i would probably have the reservations on a different collection 
 so i would manage it better with transactions.
 
+I have decided to not allow editing the booking time, since i am using the datetime to indentify the booking.
+then the booking can be removed and recreated on the desired date.
 
-    - validate restaurant range on booking methods
+
     - create tests
     - validate body entries data
     - complete READ.ME
