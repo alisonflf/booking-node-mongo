@@ -14,9 +14,7 @@ on a real application i would probably have the reservations on a different coll
 so i would manage it better with transactions.
 
 
-    - configure(ok) and create tests
     - validate restaurant range on booking methods
+    - create tests
     - validate body entries data
     - complete READ.ME
-    - post github
-    - document
