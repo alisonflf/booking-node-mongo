@@ -14,7 +14,8 @@ services:
      - ./package.json:/usr/src/app/package.json:ro
     command: "node /usr/src/app/src/server.js"
     environment:
-      TZ: America/Recife  
+      TZ: America/Recife
+      DATABASE_HOST: mongo
 
   mongo:
     image: mongo

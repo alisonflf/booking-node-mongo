@@ -2,10 +2,9 @@ I choosed the solution 1 because i had a clearer vision of what i could do.
 
 After reading and deciding what would i do, i listed this to guide me:
 
-    (ok) add and list tables
-    (ok) make, edit and cancel bookings (1 hour slots)
-    (ok) set restaurant time range
-
+    add and list tables
+    make, edit and cancel bookings (1 hour slots)
+    set restaurant time range
 
 I decided to follow the sugestion od using Koa.js so i could test Koa.js wich i had not use it yet.
 
@@ -17,6 +16,9 @@ I have decided to not allow editing the booking time, since i am using the datet
 then the booking can be removed and recreated on the desired date.
 
 
-    - create tests
     - validate body entries data
     - complete READ.ME
+
+
+missing: 
+    - clearing collections before/after test or using a different database for testing

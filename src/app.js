@@ -6,13 +6,9 @@ var router = require('./routes/index')
 
 const app = new Koa();
 
-// app.on('error', err => {
-// console.log('server error', err)
-// });
-
 app
     .use(mongo({
-        host: 'localhost',
+        host: process.env.DATABASE_HOST,
         port: 27017,
         user: 'root',
         pass: 'root',
