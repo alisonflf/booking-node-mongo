@@ -17,6 +17,9 @@ so i would manage it better with transactions.
 I have decided to not allow editing the booking time, since i am using the datetime to indentify the booking.
 then the booking can be removed and recreated on the desired date.
 
+Currently the tests need the mongo container to be up and the database to be clean and the 
+local database must have collections named setting and tables.
+
 missing: 
     - clearing collections before/after test or using a different database for testing
-    - validation of request properties
+    - better request validations
