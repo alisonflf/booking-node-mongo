@@ -18,6 +18,11 @@ router.post('/', async (ctx, next) => {
         ctx.throw(400, 'table not found');
     }
 
+    if (new Date(body.date).getMinutes() !== 0 ||
+        new Date(body.date).getSeconds() !== 0) {
+        ctx.throw(400, 'you can only book slots of 1 hour, no partial time allowed');
+    }
+
     if (new Date(body.date).getHours() < settings[0].initial_time ||
         new Date(body.date).getHours() > settings[0].final_time) {
         ctx.throw(400, 'the restaurant will not be opened at the selected time');
