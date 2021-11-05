@@ -1,3 +1,5 @@
+This project took me 8-10 hours
+
 I choosed the solution 1 because i had a clearer vision of what i could do.
 
 After reading and deciding what would i do, i listed this to guide me:
@@ -15,10 +17,6 @@ so i would manage it better with transactions.
 I have decided to not allow editing the booking time, since i am using the datetime to indentify the booking.
 then the booking can be removed and recreated on the desired date.
 
-
-    - validate body entries data
-    - complete READ.ME
-
-
 missing: 
     - clearing collections before/after test or using a different database for testing
+    - validation of request properties
