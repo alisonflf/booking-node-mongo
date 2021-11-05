@@ -4,6 +4,17 @@ const router = new Router({ prefix: '/booking' })
 router.post('/', async (ctx, next) => {
     const body = ctx.request.body
 
+    ctx.checkBody('table', 'Invalid postparam').notEmpty().isInt()
+    ctx.checkBody('chairs', 'Invalid postparam').notEmpty().isInt()
+    ctx.checkBody('customer', 'Invalid postparam').notEmpty()
+    ctx.checkBody('date', 'Invalid postparam').notEmpty()
+
+    const errors = await ctx.validationErrors()
+
+    if (errors) {
+        ctx.throw(400, 'validation error');
+    }
+
     const settings = await ctx.db.collection('settings').find().toArray()
 
     if (settings.length === 0) {
@@ -59,6 +70,15 @@ router.post('/', async (ctx, next) => {
 router.delete('/', async (ctx, next) => {
     const body = ctx.request.body
 
+    ctx.checkBody('table', 'Invalid postparam').notEmpty().isInt()
+    ctx.checkBody('date', 'Invalid postparam').notEmpty()
+
+    const errors = await ctx.validationErrors()
+
+    if (errors) {
+        ctx.throw(400, 'validation error');
+    }
+
     const table = await ctx.db.collection('tables').find({
         number: body.table
     }).toArray()
@@ -92,6 +112,17 @@ router.delete('/', async (ctx, next) => {
 
 router.patch('/', async (ctx, next) => {
     const body = ctx.request.body
+
+    ctx.checkBody('table', 'Invalid postparam').notEmpty().isInt()
+    ctx.checkBody('chairs', 'Invalid postparam').notEmpty().isInt()
+    ctx.checkBody('customer', 'Invalid postparam').notEmpty()
+    ctx.checkBody('date', 'Invalid postparam').notEmpty()
+
+    const errors = await ctx.validationErrors()
+
+    if (errors) {
+        ctx.throw(400, 'validation error');
+    }
 
     const table = await ctx.db.collection('tables').find({
         number: body.table

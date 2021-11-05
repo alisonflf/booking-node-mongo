@@ -4,6 +4,14 @@ const router = new Router({ prefix: '/table' })
 router.post('/', async (ctx, next) => {
     const body = ctx.request.body
 
+    ctx.checkBody('number', 'Invalid postparam').notEmpty().isInt()
+
+    const errors = await ctx.validationErrors()
+
+    if (errors) {
+        ctx.throw(400, 'validation error');
+    }
+
     const result = await ctx.db.collection('tables').find({ number: body.number }).toArray()
 
     if (result.length === 0) {

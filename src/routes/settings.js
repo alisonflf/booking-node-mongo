@@ -4,6 +4,16 @@ const router = new Router({ prefix: '/settings' })
 
 router.post('/', async (ctx, next) => {
     const body = ctx.request.body
+
+    ctx.checkBody('initial_time', 'Invalid postparam').notEmpty().isInt()
+    ctx.checkBody('final_time', 'Invalid postparam').notEmpty().isInt()
+
+    const errors = await ctx.validationErrors()
+
+    if (errors) {
+        ctx.throw(400, 'validation error');
+    }
+
     const result = await ctx.db.collection('settings').find().toArray()
 
     if (result.length === 0) {
@@ -23,6 +33,16 @@ router.post('/', async (ctx, next) => {
 
 router.put('/', async (ctx, next) => {
     const body = ctx.request.body
+
+    ctx.checkBody('initial_time', 'Invalid postparam').notEmpty().isInt()
+    ctx.checkBody('final_time', 'Invalid postparam').notEmpty().isInt()
+
+    const errors = await ctx.validationErrors()
+
+    if (errors) {
+        ctx.throw(400, 'validation error');
+    }
+
     const result = await ctx.db.collection('settings').find().toArray()
 
     if (result.length !== 0) {

@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const mongo = require('koa-mongo')
-var bodyParser = require('koa-bodyparser');
+const bodyParser = require('koa-bodyparser');
+const koaValidator = require('koa-async-validator')
 
 var router = require('./routes/index')
 
@@ -18,6 +19,7 @@ app
         min: 1
     }))
     .use(bodyParser())
+    .use(koaValidator())
     .use(router())
 
 module.exports = app;
